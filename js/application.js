@@ -1,6 +1,20 @@
 $(document).ready(function(){
 	alert("let's get buzzed");
 
+	var numberEntered = +prompt("Please enter a number: ");
+
+	console.log(typeof numberEntered);
+
+	if (typeof numberEntered == "number") {
+		alert("you entered: " + numberEntered + "it's a number")
+	}
+	else
+	{
+		alert("you did not enter a number");
+	} 
+		
+
+
 	for (var myNumber = 1; myNumber <= 100; myNumber++) {
 
 		if (dividedByEvenly(myNumber, 3) && dividedByEvenly(myNumber, 5)) {
