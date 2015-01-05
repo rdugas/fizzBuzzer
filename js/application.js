@@ -1,42 +1,44 @@
 $(document).ready(function(){
 	alert("let's get buzzed");
 
-	var numberEntered = +prompt("Please enter a number: ");
+	var valueEntered = prompt("Please enter a number: ");
+	var numericValueEntered = +valueEntered;
+	console.log(typeof valueEntered);
+	console.log(typeof numericValueEntered);
 
-	console.log(typeof numberEntered);
-
-	if (typeof numberEntered == "number") {
-		alert("you entered: " + numberEntered + "it's a number")
+	if ( isNaN(numericValueEntered) || (numericValueEntered % 1) != 0) {
+		alert("Your value is non numeric or not a whole number, please enter a whole number.");
+		window.location.reload(true); 
 	}
 	else
 	{
-		alert("you did not enter a number");
-	} 
+		fizzbuzz(numericValueEntered);
+s	} 
 		
 
+	function fizzbuzz(countToNumber) {
 
-	for (var myNumber = 1; myNumber <= 100; myNumber++) {
+		for (var myNumber = 1; myNumber <= countToNumber; myNumber++) {
 
-		if (dividedByEvenly(myNumber, 3) && dividedByEvenly(myNumber, 5)) {
-			$("section").append("FIZZ BUZZ, ");
+			if (dividedByEvenly(myNumber, 3) && dividedByEvenly(myNumber, 5)) {
+				$("section").append(" FIZZ BUZZ , ");
+			}
+			else if (dividedByEvenly(myNumber, 3)){
+				$("section").append(" fizz , ");
+			}
+			else if (dividedByEvenly(myNumber, 5)){
+				$("section").append(" buzz , ");
+			}
+			else {
+				$("section").append(myNumber + " , ");
+			}
 		}
-		else if (dividedByEvenly(myNumber, 3)){
-			$("section").append("fizz, ");
-		}
-		else if (myNumber == 100){
-			$("section").append("buzz. THE END!!!");
-		}
-		else if (dividedByEvenly(myNumber, 5)){
-			$("section").append("buzz, ");
-		}
-		else {
-			$("section").append(myNumber + " ,");
-		}
-	};
+
+		$("section").append("The End!");
+	}	
 
 	function dividedByEvenly(numerator, denominator){
-		if (numerator % denominator == 0)
-			{return true};
+		return (numerator % denominator == 0);
 	}
 
 });
